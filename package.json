@@ -9,10 +9,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:universal": "npm run build:client-and-server-bundles && npm run webpack:server",
+    "build:universal": "npm run build:client-and-server-bundles && npm run webpack:server && npm run build:pwa",
     "serve:universal": "node dist/server.js",
     "build:client-and-server-bundles": "ng build --prod && ng build --prod --app 1 --output-hashing=false",
-    "webpack:server": "webpack --config webpack.server.config.js --progress --colors"
+    "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
+    "build:pwa": "workbox generate:sw"
   },
   "private": true,
   "dependencies": {
@@ -52,6 +53,7 @@
     "protractor": "~5.2.0",
     "ts-node": "~3.3.0",
     "tslint": "~5.8.0",
-    "typescript": "~2.4.2"
+    "typescript": "~2.4.2",
+    "workbox-cli": "^2.1.1"
   }
 }
