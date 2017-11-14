@@ -3,8 +3,10 @@ module.exports = {
   "globPatterns": [
     "**/*.{html,js,css,jpg,jpeg,png}"
   ],
-  "swDest": "dist/browser/sw.js",
   "globIgnores": [
     "../workbox-cli-config.js"
-  ]
+  ],
+  "swDest": "dist/browser/sw.js",
+  "clientsClaim": true,
+  "skipWaiting": true
 };
