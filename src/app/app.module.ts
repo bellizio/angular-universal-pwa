@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
+import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 
@@ -10,8 +12,8 @@ import { environment } from '../environments/environment';
     AppComponent
   ],
   imports: [
-    // BrowserModule
     BrowserModule.withServerTransition({ appId: 'ng-universal-pwa' }),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
