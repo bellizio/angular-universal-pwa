@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, PLATFORM_ID, APP_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, APP_BASE_HREF } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './_shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
@@ -13,9 +15,14 @@ import { environment } from '../environments/environment';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-universal-pwa' }),
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    SharedModule
   ],
-  providers: [],
+  providers: [{
+    provide: APP_BASE_HREF,
+    useValue: environment.API_BASE_URL
+  }],
   bootstrap: [AppComponent]
 })
 

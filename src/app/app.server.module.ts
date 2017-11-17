@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
+import { APP_BASE_HREF } from '@angular/common';
 import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader';
 
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
+import { environment } from '../environments/environment';
 
 @NgModule({
   imports: [
