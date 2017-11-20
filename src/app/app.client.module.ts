@@ -23,6 +23,8 @@ export class AppClientModule implements OnInit {
     // this.registerServiceWorker();
   }
 
+  // this uses Workbox to generate a service-worker for the production build
+  // ngsw-worker must be disabled if this is enabled in ngOnInit()
   registerServiceWorker(): void {
     if (environment.production) {
       if ('serviceWorker' in navigator) {
