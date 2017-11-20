@@ -33,23 +33,5 @@ export class AppModule {
   ) {
     const platform = isPlatformBrowser(platformId) ? 'in the browser' : 'on the server';
     console.log(`Running ${platform} with appId=${appId}`);
-
-    if (isPlatformBrowser(platformId)) {
-      this.registerServiceWorker();
-    }
-  }
-
-  registerServiceWorker(): void {
-    if (environment.production) {
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js').then(registration => {
-            console.log('SW registered: ', registration);
-          }).catch(registrationError => {
-            console.log('SW registration failed: ', registrationError);
-          });
-        });
-      }
-    }
   }
 }
