@@ -26,7 +26,7 @@ export class ApiService {
 
     return this.http.request(method, path, options)
       .pipe(
-        tap(_ => this.log(`fetched data`)),
+        tap(_ => console.log(`fetched data`)),
         catchError(this.handleError<any>(`${path}: ${method}`))
       );
   }
@@ -66,18 +66,10 @@ export class ApiService {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
+      console.error(`${operation} failed: ${error.message}`); // log to console instead
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
-  }
-
-  /** Log a HeroService message with the MessageService */
-  private log(message: string) {
-    // this.messageService.add('HeroService: ' + message);
   }
 }
