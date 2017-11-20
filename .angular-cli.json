@@ -8,7 +8,7 @@
       "root": "src",
       "outDir": "dist/browser",
       "assets": [
-        "assets",
+        "assets/images",
         "favicon.ico"
       ],
       "index": "index.html",
@@ -32,7 +32,7 @@
       "root": "src",
       "outDir": "dist/server",
       "assets": [
-        "assets",
+        "assets/images",
         "favicon.ico"
       ],
       "platform": "server",
