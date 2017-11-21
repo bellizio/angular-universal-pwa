@@ -24,11 +24,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Build the universal app
 
-Run `npm run build:universal` to build the universal app for production purposes. See the [Angular Universal Docs](https://angular.io/guide/universal) for more information.
+Run `npm run build:ssr` to build the universal app for production purposes. See the [Angular Universal Docs](https://angular.io/guide/universal) for more information.
 
 ## Serve the universal app
 
-Run `npm run serve:universal` to serve the production app locally. **NOTE**: `npm run build:universal` must be run prior to running the serve command.
+Run `npm run serve:ssr` to serve the production app locally. **NOTE**: `npm run build:ssr` must be run prior to running the serve command.
 
 ## Further help
 
