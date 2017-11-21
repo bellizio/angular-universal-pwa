@@ -32,11 +32,7 @@
     {
       "root": "src",
       "outDir": "dist/server",
-      "assets": [
-        "assets/images",
-        "favicon.ico",
-        "manifest.json"
-      ],
+      "assets": [],
       "platform": "server",
       "index": "index.html",
       "main": "main.server.ts",
@@ -44,9 +40,7 @@
       "tsconfig": "tsconfig.server.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
-      "styles": [
-        "assets/css/styles.scss"
-      ],
+      "styles": [],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
