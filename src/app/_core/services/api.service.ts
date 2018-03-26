@@ -7,53 +7,50 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class ApiService {
-
   private apiUrl: string = '';
 
-  constructor (
+  constructor(
     private http: HttpClient,
-    @Optional() @Inject(APP_BASE_HREF) baseUrl: string
+    @Optional()
+    @Inject(APP_BASE_HREF)
+    baseUrl: string
   ) {
     this.apiUrl = baseUrl ? baseUrl : this.apiUrl;
   }
 
-  request(method, path, data?: any) {
-    const options: any = {};
-
-    if (data) {
-      options.body = data;
-    }
-
-    return this.http.request(method, path, options)
+  request(method: string, path: string, options?: any): Observable<any> {
+    return this.http
+      .request(method, path, options)
       .pipe(
-        tap(_ => console.log(`fetched data`)),
+        map((response: any) => this.transformResponse(response)),
         catchError(this.handleError<any>(`${path}: ${method}`))
       );
   }
 
-  get(path, data?: any) {
-    return this.request('GET', this.buildPath(path), data);
+  get(path: string, options?: any) {
+    return this.request('GET', this.buildPath(path), options);
   }
 
-  post(path, data?: any) {
-    return this.request('POST', this.buildPath(path), data);
+  post(path: string, options?: any) {
+    return this.request('POST', this.buildPath(path), options);
   }
 
-  put(path, data?: any) {
-    return this.request('PUT', this.buildPath(path), data);
+  put(path: string, options?: any) {
+    return this.request('PUT', this.buildPath(path), options);
   }
 
-  delete(path) {
+  delete(path: string) {
     return this.request('DELETE', this.buildPath(path));
   }
 
-  search(path, data?: any) {
-    return this.request('POST', path, data);
-  }
-
-  private buildPath(path) {
+  private buildPath(path): string {
     const urlPath = path.startsWith('/') ? path : `/${path}`;
     return `${this.apiUrl}${urlPath}`;
+  }
+
+  private transformResponse(res: any): any {
+    // do any necessary data transformations of response here
+    return res;
   }
 
   /**
@@ -64,7 +61,6 @@ export class ApiService {
    */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
       // TODO: send the error to remote logging infrastructure
       console.error(`${operation} failed: ${error.message}`); // log to console instead
 
